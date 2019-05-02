@@ -159,7 +159,7 @@ console.log(nestedData);
       .style("opacity","0");
 
   legend.append("rect")
-      .attr("x", width - 30)
+      .attr("x", width - 18)
       .attr("width", 18)
       .attr("height", 18)
       .style("fill", function(d) { return color(d); });
