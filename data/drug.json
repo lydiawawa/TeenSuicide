@@ -1,0 +1,152 @@
+[
+  {
+    "s_category": 1,
+    "count": 0,
+    "drug_cat": 1
+  },
+  {
+    "s_category": 1,
+    "count": 0,
+    "drug_cat": 2
+  },
+  {
+    "s_category": 1,
+    "count": 0,
+    "drug_cat": 3
+  },
+  {
+    "s_category": 1,
+    "count": 0,
+    "drug_cat": 4
+  },
+  {
+    "s_category": 1,
+    "count": 0,
+    "drug_cat": 5
+  },
+  {
+    "s_category": 1,
+    "count": 0,
+    "drug_cat": 6
+  },
+  {
+    "s_category": 2,
+    "count": 367,
+    "drug_cat": 1
+  },
+  {
+    "s_category": 2,
+    "count": 35,
+    "drug_cat": 2
+  },
+  {
+    "s_category": 2,
+    "count": 8,
+    "drug_cat": 3
+  },
+  {
+    "s_category": 2,
+    "count": 1,
+    "drug_cat": 4
+  },
+  {
+    "s_category": 2,
+    "count": 1,
+    "drug_cat": 5
+  },
+  {
+    "s_category": 2,
+    "count": 1,
+    "drug_cat": 6
+  },
+  {
+    "s_category": 3,
+    "count": 223,
+    "drug_cat": 1
+  },
+  {
+    "s_category": 3,
+    "count": 24,
+    "drug_cat": 2
+  },
+  {
+    "s_category": 3,
+    "count": 4,
+    "drug_cat": 3
+  },
+  {
+    "s_category": 3,
+    "count": 4,
+    "drug_cat": 4
+  },
+  {
+    "s_category": 3,
+    "count": 2,
+    "drug_cat": 5
+  },
+  {
+    "s_category": 3,
+    "count": 2,
+    "drug_cat": 6
+  },
+  {
+    "s_category": 4,
+    "count": 29,
+    "drug_cat": 1
+  },
+  {
+    "s_category": 4,
+    "count": 5,
+    "drug_cat": 2
+  },
+  {
+    "s_category": 4,
+    "count": 9,
+    "drug_cat": 3
+  },
+  {
+    "s_category": 4,
+    "count": 1,
+    "drug_cat": 4
+  },
+  {
+    "s_category": 4,
+    "count": 2,
+    "drug_cat": 5
+  },
+  {
+    "s_category": 4,
+    "count": 3,
+    "drug_cat": 6
+  },
+  {
+    "s_category": 5,
+    "count": 37,
+    "drug_cat": 1
+  },
+  {
+    "s_category": 5,
+    "count": 1,
+    "drug_cat": 2
+  },
+  {
+    "s_category": 5,
+    "count": 3,
+    "drug_cat": 3
+  },
+  {
+    "s_category": 5,
+    "count": 3,
+    "drug_cat": 4
+  },
+  {
+    "s_category": 5,
+    "count": 2,
+    "drug_cat": 5
+  },
+  {
+    "s_category": 5,
+    "count": 26,
+    "drug_cat": 6
+  }
+]

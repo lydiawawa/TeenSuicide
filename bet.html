@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Teen Suicide</title>
+
+<!-- Bootstrap CSS CDN -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+<link rel="shortcut icon" href="icons8-bookmark-40.png">
+
+<!-- Custom styling -->
+<link rel="stylesheet" href="css/style.css">
+
+<!-- JS libraries -->
+<script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<!--Google Chart-->
+<script type = "text/javascript" src = "https://www.gstatic.com/charts/loader.js"></script>
+
+<!-----AM Chart------>
+<!--
+<script src="https://www.amcharts.com/lib/4/core.js"></script>
+<script src="https://www.amcharts.com/lib/4/charts.js"></script>
+<script src="https://www.amcharts.com/lib/4/themes/frozen.js"></script>
+<script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+-->
+
+<!-- Menu Collapse Icon -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css?family=Raleway:500|VT323|Shadows+Into+Light+Two" rel="stylesheet">
+</head>
+
+<body>
+<div class="wrapper">
+
+<!-- Sidebar  -->
+<nav id="sidebar">
+  <div class="sidebar-header">
+<!--    <h3>TEEN</h3>
+    <h3>SUICIDE</h3>-->
+  </div>
+  <ul class="list-unstyled components">
+    <li> <a href="index.html"> Suicide in the States</a> </li>
+    <li>
+    <li> <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">2017 YRBS</a>
+      <ul class="collapse list-unstyled" id="homeSubmenu">
+        <li> <a href="yrbs.html">Overview</a> </li>
+        <li> <a href="gender.html">Gender</a> </li>
+        <li> <a href="age.html">Age</a> </li>
+        <li> <a href="race.html">Race</a> </li>
+        <li> <a href="brg.html">BMI + Race + Gender</a> </li>
+      </ul>
+    </li>
+    <li  class="active"> <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><span>Causes</span></a>
+      <ul class="collapse list-unstyled" id="pageSubmenu">
+        <li > <a href="drug.html">Drug</a> </li>
+        <li> <a href="alcohol.html">Alcohol</a> </li>
+        <li> <a href="tu.html">Tobacco Use</a> </li>
+        <li  class="active"> <a href="bet.html">Behavior Patterns</a> </li>
+      </ul>
+    </li>
+    <li> <a href="conclusion.html">Conclusion</a> </li>
+    <li> <a href="contact.html">Contact</a> </li>
+  </ul>
+  <ul class="list-unstyled CTAs">
+    <li> <a href="https://www.cdc.gov/healthyyouth/data/yrbs/pdf/2017/2017_YRBS_Data_Users_Guide.pdf" target="_blank" class="download">Download 2017 YRBS</a> </li>
+    <li> <a href="https://www.cdc.gov/healthyyouth/data/yrbs/data.htm" target="_blank"class="article">CDC Survey Data Source</a> </li>
+    <li > <a href="https://suicidepreventionlifeline.org/" target="_blank" class="helpline">Suicide Life Line <br/>
+      (1-800-273-8255)</a> </li>
+  </ul>
+</nav>
+
+<!-- Page Content  -->
+<div id="content" >
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid ">
+    <h4>>> 2017 YRBS Finding - Bahavior Pattern</h4>
+    <div class="float-right"></div>
+    <button type="button" id="sidebarCollapse" class="btn btn-secondary "> <i class="fa fa-cog " aria-hidden="true"></i> <span></span> </button>
+  </div>
+</nav>
+<img src="img/gun.jpg" class="fade-in one imagedropshadow mx-auto d-block img-fluid greyimg" alt="Responsive image" style = "width:50%; height:50%"></img>
+<nav class="navbar bg-light">
+  <section class="intro">
+    <p class="text-center quotes">“When people hurt you over and over, think of them like sand paper; They may scratch and hurt you a bit, but in the end, you end up polished and they end up useless.” ― Chris Colfer </p>
+  </section>
+</nav>
+<h2>Behavior patterns of suicidal teens</h2>
+<h7 class="pl-2">The following graphs display emotional, behaviour and social patterns of suicidal teens: </h7>
+
+
+	
+<!---Q21Sex------------------------------------------------->
+<div class="bar-wrap fade-in one" style = "width: 800px; height:500px">	
+<b>Choose Category</b>
+<select id="categorySex">
+  <option value="a">All</option>
+  <option value="f">Female</option>
+  <option value="m">Male</option>
+</select> <br> <br>
+  <span class="titleBar">During the past 12 months, how many times did someone you were dating or going out with force you to do
+sexual things that you did not want to do? (Count such things as kissing, touching, or being physically forced to
+have sexual intercourse.)  </span> 
+
+	
+<div id="group-bar-sex" style = "width: 880px; height:500px"></div>
+
+<span class="clickThisSex clickThis"> <b> <-- Click reactangle! </b></span>
+
+<!-- Sort dimension -->
+<span class="sortCheck"><b style="font-size: 11px;">Sort Values</b>
+<input type="checkbox" id="sortCheckboxSex">
+</span>	
+</div>	
+	
+<p>The likelihood of female teens to be exposed to sexual violence could be the leading cause of higher female respondents reported attempted suicide. However, the data reveals male respondents in the extreme suicidal group is more prone to be influenced by sexual violence than female.</p>	
+	
+	
+	
+
+<div class="line"></div>	
+<!----Gun------------------------------------------------->
+<div class="bar-wrap fade-in one" style = "width: 800px; height:500px">	
+<b>Choose Category</b>
+<select id="categoryGun">
+  <option value="a">All</option>
+  <option value="f">Female</option>
+  <option value="m">Male</option>
+  </select> <br> <br>
+  <span class="titleBar">During the past 12 months, on how many days did you carry a gun? (Do not count the days when you carried a
+gun only for hunting or for a sport, such as target shooting.) </span> 
+
+	
+<div id="group-bar-gun" style = "width: 880px; height:500px"></div>
+
+<span class="clickThisGun clickThis"> <b> <-- Click reactangle! </b></span>
+
+<!-- Sort dimension -->
+<span class="sortCheck"><b style="font-size: 11px;">Sort Values</b>
+<input type="checkbox" id="sortCheckboxGun">
+</span>	
+</div>	
+	
+<p>Gun carry has a direct impact to suicide attempt. For both gender groups. It appears to be determinant characteristic displayed extreme suicidal teens.</p>
+
+<div class="line"></div>
+
+
+	
+<!----Threat---------------------------------------------->	
+<div class="bar-wrap fade-in one" style = "width: 800px; height:500px">		
+<b>Choose Category</b>
+
+<select id="categoryThreat">
+  <option value="a">All</option>
+  <option value="f">Female</option>
+  <option value="m">Male</option>
+</select> <br><br>
+	
+<span class="titleBar">During the past 12 months, how many times has someone threatened or injured you with a weapon such as a gun,
+knife, or club on school property? </span> 
+
+<div id="group-bar-threats" style = "width: 880px; height:500px"></div>
+
+<span class="clickThisThreat clickThis"> <b> <-- Click reactangle! </b></span>
+
+<!-- Sort dimension -->
+<span class="sortCheck" ><b style="font-size: 11px;">Sort Values</b>
+<input type="checkbox" id="sortCheckboxThreat">
+</span>
+
+</div>
+		
+	
+<p>Threats have similar influence in both female and male. It is evidential that a threat leads to higher rate of suicidal attempts.</p>
+
+<div class="line"></div>
+	
+	
+<!---fight------------------------------------------------->
+<div class="bar-wrap fade-in one" style = "width: 800px; height:500px">	
+<b>Choose Category</b>
+<select id="categoryFight">
+  <option value="a">All</option>
+  <option value="f">Female</option>
+  <option value="m">Male</option>
+</select> <br><br>
+	
+<span class="titleBar">During the past 12 months, how many times were you in a physical fight?  </span> 
+
+
+	
+<div id="group-bar-fight" style = "width: 880px; height:500px"></div>
+
+<span class="clickThisFight clickThis"> <b> <-- Click reactangle! </b></span>
+
+<!-- Sort dimension -->
+<span class="sortCheck"><b style="font-size: 11px;">Sort Values</b>
+<input type="checkbox" id="sortCheckboxFight">
+</span>	
+</div>	
+
+<p>Violent behavior has more evidential influence in male group, but more ambiguous for female.However it has a direct impact on suicidal attempt, the violent an individual is the more likely he or she will commit suicide. </p>
+		
+<p>(<a href="https://www.cdc.gov" target="_blank">Data Courtesy of CDC</a>)</p>	
+	
+	
+<div class="line"></div>	
+	
+	
+
+
+<!-- Custom JS --> 
+<script src="js/amcharts.js"></script> 
+
+<!--This creates the graphs --> 
+<!--<script src="js/mainWawa.js"></script>--> 
+<script src="js/groupBarwawa.js"></script> 
+<script src="js/d3-tip.js"></script> 
+<!--<script src="js/groupBarwawa.js"></script>--> 
+
+<!-- Popper.JS for drop-down --> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script> 
+<!-- Bootstrap JS --> 
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script> 
+<!-- jQuery Custom Scroller CDN --> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script> 
+
+
+<script type="text/javascript">
+groupBar("#group-bar-fight", 
+		 "#categoryFight", 
+		 "#sortCheckboxFight",
+		 ".clickThisFight",
+		 "data/Q17fight.csv", 
+		 "<strong>Fights: </strong>",
+		 8);
+groupBar("#group-bar-gun", 
+		 "#categoryGun", 
+		 "#sortCheckboxGun",
+		 ".clickThisGun",
+		 "data/q14gun.csv", 
+		 "<strong>Days carried guns: </strong>",
+		 5);
+groupBar("#group-bar-threats", 
+		 "#categoryThreat", 
+		 "#sortCheckboxThreat",
+		".clickThisThreat",
+		 "data/q16threats.csv", 
+		 "<strong>Threats: </strong>",
+		 8);
+groupBar("#group-bar-sex", 
+		 "#categorySex", 
+		 "#sortCheckboxSex",
+		".clickThisSex",
+		 "data/q21sex.csv", 
+		 "<strong>Unwanted sex by partner: </strong>",
+		 5);
+       //Fading in content effect
+        $(document).ready(function () {
+			 /* Every time the window is scrolled ... */
+    	$(window).scroll( function(){
+    
+        /* Check the location of each desired element */
+        	$('.hideme').each( function(i){
+            
+            var bottom_of_object = $(this).offset().top + $(this).outerHeight();
+            var bottom_of_window = $(window).scrollTop() + $(window).height();
+            
+            /* If the object is completely visible in the window, fade it it */
+            if( bottom_of_window > bottom_of_object ){
+                
+                $(this).animate({'opacity':'1'},500);
+                    
+            }
+            
+        	}); 
+    
+    	});
+	   
+	  //Expandable sidebar
+      $("#sidebar").mCustomScrollbar({
+                theme: "minimal"
+            });
+		//Sidebar shrink 	
+		$('#sidebarCollapse').on('click', function () {
+                $('#sidebar, #content').toggleClass('active');
+                $('.collapse.in').toggleClass('in');
+                $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+        });
+		
+		
+			
+        }); // end effects
+    </script>
+</body>
+</html>

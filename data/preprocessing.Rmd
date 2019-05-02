@@ -1,0 +1,597 @@
+---
+title: "dataVis-Final"
+author: "Lydia Shia"
+date: "4/4/2019"
+output: html_document
+---
+
+```{r}
+require(haven)
+teenSuicide_orig <- read_sas("yrbs17.sas7bdat")
+teenSuicide <- read.csv(file="allresponses.csv",header = TRUE)
+teenSf2_2 <- teenSuicide 
+teenSf2_21 <- teenSf2_2[!(teenSf2_2$q28=="1"),]
+teeSf2_221 <- teenSf2_21[!(as.character(teenSf2_21$q29)=="1"),]
+q28 <- teeSf2_221
+
+#missing
+nMis<-sum(is.na(teenSuicide))
+table(is.na(teenSuicide))
+sapply(teenSuicide, function(x) sum(is.na(x)))
+
+library(mice)
+library(dplyr)
+install.packages("mice")
+teenSf <- teenSuicide[c(1:99,233)]
+teenSf[teenSf==""]<-NA
+sum(is.na(teenSf))
+x<-na.omit(teenSf)
+x1 <- x[!(x$Q28=="1"),]
+nrow(x1)
+teenSf$Q28
+str(teenSf)
+teenSf <- mutate_if(teenSf, is.character, as.factor)
+
+teenSf1 <- teenSf[!(teenSf$Q28==""),]
+teenSf1 <- as.data.frame(teenSf1)
+teenSf2 <- teenSf[!(teenSf$Q26==""),]
+
+# find numerical and character vars
+resp_cat <- teenSf[,sapply(teenSf, is.factor)]
+nameC <- length(names(resp_cat))
+resp_num <- teenSf[,!sapply(teenSf, is.factor)]
+nameN <- length(names(resp_num))
+View(teenSf.nomiss)
+levels(teenSf.nomiss$Q2)
+str(teenSf)
+lapply(Filter(is.factor,teenSf), levels)
+install.packages("dummies")
+install.packages("janitor")
+library(dummies)
+library(janitor)
+#hot encoding for categorical variable
+
+teenSf1 <- as.data.frame(teenSf1)
+str(teenSf.nomiss)
+q5 <- teenSf.nomiss$Q5
+
+teenSf2 <- dummy.data.frame(teenSf.nomiss, names=c("Q5"), sep="_")
+teenQ28 <- teenSf1_1$Q28
+
+teenSf2 <- clean_names(teenSf2)
+teenSf2_1<-teenSf2
+
+
+
+teeSf2 <- teenSf2_1
+teeSf2 <- mutate_if(teeSf2, is.integer, as.factor)
+str(teeSf2)
+names(teeSf2)
+teeSf2 <- cbind(teeSf2,q5)
+teenSf2_2 <- NULL
+names(teeSf2)
+teenSf2_2 <- teeSf2[, -which(names(teeSf2) %in% c("q6","q7","bmipct"))]
+numTeen <- teeSf2[, which(names(teeSf2) %in% c("q6","q7","bmipct"))]
+
+
+teenSf2_3 <- NULL
+teenSf2_3 <- mutate_if(teenSf2_2, is.factor, as.numeric)
+teenSf2_2[] <- lapply(teenSf2_2, function(x) as.numeric(as.character(x)))
+
+teenSf <- mice(teenSf, m=5, maxit=10, meth='pmm', seed=200)
+
+
+imputeMiss <- teenSf[6:7]
+imputeMiss  <- mice(teenSf , m=5, maxit=10, seed=200)
+
+teenSf1_2<- mice(teenSf1_1, m=1, method = 'pmm', maxit = 1, seed = 200)
+teenSf1_2 <- mice::complete(teenSf1_2,action = 1)
+
+
+#Seperate numerical and categorical variables
+
+resp_cat <- teenSf[,sapply(teenSf, is.factor)]
+nameC <- length(names(resp_cat))
+resp_num <- teenSf[,!sapply(teenSf, is.factor)]
+nameN <- length(names(resp_num))
+str(teenSf)
+
+
+#PCA
+names(teenSf2_2)
+teenSf2_2 <- cbind(teenSf2_2,numTeen,q5)
+sum(is.na(teenSf2_2))
+
+length(teenSf2_21$q2)/length(teenSf2_2$q2)
+nrow(teenSf2_21)
+
+teeSf2_22 <-teeSf2[!(teeSf2$q28=="1"),]
+
+
+pca_suicide <- teenSf2_21[, -which(names(teenSf2_21) == "q28")]
+pca_suicide <- pca_suicide[-130]
+names(pca_suicide)
+scale.pca <- scale(pca_suicide)
+names(scale.pca)
+scale.pca <- as.data.frame(scale.pca)
+
+write.csv(teenSf2_21, file = "teensuicide1.csv", row.names = FALSE)
+
+
+teenSf2_3 <- teenSf2_2[, -which(names(teenSf2_2) %in% c("q6","q7","bmipct","q5"))]
+pca_suicide <- pca_suicide[, -which(names(pca_suicide) %in% c("q6.1","q7.1","bmipct.1","q5"))]
+sum(is.na(pca_suicide))
+teenSf2_3[] <- lapply(teenSf2_3, function(x) as.character(as.numeric(x)))
+teenSf2_3 <- mutate_if(teenSf2_3, is.character, as.factor)
+teenSf2_3 <- cbind(q5,teenSf2_2, numTeen)
+names(teenSf2_3)
+summary(teenSf2_3)
+table(teenSf2_3$q2)
+#Scaling
+library(standardize)
+
+mins= as.integer(summarise_all(pca_suicide, min))
+rng = as.integer(summarise_all(pca_suicide, function(x) diff(range(x))))
+pca.scaled = data.frame(scale(pca_suicide, center= mins, scale=rng))
+sum(is.na(pca_suicide))
+
+
+stdize = function(x, ...) {(x - min(x, ...)) / (max(x, ...) - min(x, ...))}
+pca.scaled <- stdize(pca_suicide, na.rm = T) # works!
+sum(is.na(pca.scaled))
+nrow(pca.scaled)
+
+library(mosaic)
+prop.table(teenSf2_3, digits=2, percent = TRUE, total = FALSE, n=TRUE)
+#convert to numerical
+
+
+#Dimension reduction======
+
+library("FactoMineR")
+library(factoextra)
+
+res.pca <- PCA(pca.scaled , graph = FALSE)
+fviz_eig(res.pca, addlabels = TRUE, ylim = c(0, 50))
+
+fviz_contrib(res.pca, choice = "var", axes = 1, top = 50)
+test <- log(table(teenSf2_3$q28,teenSf2_3$q42))
+test[is.infinite(test)] <- 0 
+
+write.table(teenSf2_2, file = "allresponses.csv", sep = ",", quote = FALSE, row.names = F)
+prop.table(test, margin = 1)
+as.data.frame(test)
+barplot(teenSf2_3, xlab="Result", ylab="N", col="black",
+        main="Absolute frequency")
+ggplot(data=teenSf2_4, aes(x=q42, fill=q28)) + geom_bar(stat="count", position = position_dodge())
+teenSf2_2<-teenSf2_2[-c(132,133,134)]
+
+teenSf2_3 %>% count(q42)%>%mutate(perc = n/nrow(teenSf2_3)) -> teenSf2_4
+teenSf2_4 <- teenSf2_3[!(teenSf2_3$q28=="1"),]
+
+
+library(ggplot2)
+ myplot1 <- ggplot(teeSf2_221, aes(x=factor(q91))) + 
+          geom_bar(aes(fill=factor(q28), y = (..count..)),position="dodge") + 
+   
+          ylab("relative frequencies") 
+
+myplot <- ggplot(x1, aes(x=factor(Q62))) + 
+          geom_bar(aes(fill=factor(Q28), y = (..count..)),position="dodge") + 
+   
+          ylab("relative frequencies") 
+
+myplot1 <- ggplot(teeSf2_22, aes(x=q91)) + 
+          geom_bar(aes(fill=q28, y = log((..count..))),position="dodge") + 
+   
+          ylab("relative frequencies") 
+
+ggplot(teeSf2_221, aes(y=bmipct, x=q5,size=q28, color=q29)) + geom_point(alpha=0.4)+theme(axis.text.x = element_text(angle = 45, hjust = 1))
+nrow(teenSf2_4)
+
+
+ggplot(teeSf2_221,aes(x=factor(""), fill=q2)) + geom_bar() + coord_polar(theta = "y", start=0) + scale_x_discrete("") 
+
+table(teeSf2_221$q2)
+
+teenSf2_41 <- teenSf2_4[!(teenSf2_4$q29=="1"),]
+
+#Injured respondentws==========
+teeSf2_221 <- teenSf2_21[!(as.character(teenSf2_21$q29)=="1"),]
+teeSf2_222 <- teenSf2_21[(as.character(teenSf2_21$q29)=="2"),]
+teeSf2_221 <- teenSuicide[!(as.factor(teenSuicide$q29)=='1'),]
+
+test2 <- table(teeSf2_221$q5)
+write.table(test2, file = "race.csv", sep = ",", quote = FALSE, row.names = F)
+
+table(as.factor(teeSf2_221$q28),as.factor(teeSf2_221$q91))
+drug <- as.data.frame(cbind(as.character(teeSf2_221$q28),as.character(teeSf2_221$q91)))
+
+
+write.table(drug, file = "drug1.csv", sep = ",", quote = FALSE, row.names = T)
+write.table(teenSf2_21, file = "reportedS.csv", sep = ",", quote = FALSE, row.names = T)
+write.table(teeSf2_221, file = "reportedSno29.csv", sep = ",", quote = FALSE, row.names = T)
+
+
+#Recode ---------------
+teeSf2_221$q2<-as.factor(teeSf2_221$q2)
+levels(teeSf2_221$q2) <-c("female","male")
+write.table(teeSf2_221, file = "reportedSno29.csv", sep = ",", quote = FALSE, row.names = F)
+table(teenSuicide$q27)
+
+library(dplyr)
+levels(as.factor(teeSf2_221$q5))
+table(race)
+nrow(teeSf2_221)
+race <- teeSf2_221$q5
+target <- c("A","B","E","D","CE","AE","C")
+recode(race, "A","B","E","D","CE","AE","C", .default = "other")
+teeSf2_221$q5 <- as.factor(teeSf2_221$q5)
+levels(as.factor(race))
+#remove space
+teeSf2_221$q5 <- gsub(" ","",teeSf2_221$q5, fixed=TRUE)
+
+teeSf2_221$q5 <- as.character(teeSf2_221$q5)
+race <- as.factor(race)
+levels(race) <- c("AI/AN","AIAN/White","Asian","Black","Black/White","NH/OPI", "White","Other")
+
+race  <- ifelse(teeSf2_221$q5 %in% target, teeSf2_221$q5, "other")
+
+```
+
+
+```{r}
+#miss forest
+
+library(missForest)
+
+teenSf1[teenSf1==""]<-NA
+mean(is.na(teenSf1))
+
+rowSums(is.na(teenSf1))
+sum(!complete.cases(teenSf1))/nrow(teenSf1)
+table(is.na(teenSf1))
+prodNA(teenSf1)
+set.seed(100)
+teenSf.mis <- prodNA(teenSf1, noNA = 0.2)
+str(teenSf.mis)
+teenSf.imp
+teenSf.imp1
+teenSf.imp2 <- missForest(teenSf.mis, maxiter = 5,ntree=50,xtrue = teenSf1, verbose = TRUE)
+
+teenSf.nomiss <- teenSf.imp1$ximp
+View(teenSf.nomiss$Q2)
+sum(is.na(teenSf.nomiss$Q2))
+install.packages("Hmisc")
+library(Hmisc)
+
+
+library(mi)
+teenSf.mis <- prodNA(teenSf1, noNA = 0.1)
+mi_data <- mi(teenSf.mis, seed = 255)
+
+```
+
+
+
+
+
+
+```{r pressure, echo=FALSE}
+#Tabulate for d3.js
+
+female <- teeSf2_221[(as.character(teeSf2_221$q2)=="female"),]
+male <- teeSf2_221[(as.character(teeSf2_221$q2)=="male"),]
+
+#Q16
+table(teeSf2_221$q28, teeSf2_221$q16)
+
+library(data.table)
+#Drugs --------------------------------------
+#91
+teeSf2_221$q91 <- as.factor(teeSf2_221$q91)
+teeSf2_221$q28 <- as.factor(teeSf2_221$q28)
+teeSf2_221$q53 <- as.factor(teeSf2_221$q53)
+levels(teeSf2_221$q28) <- c("1 time","2 or 3 times","4 or 5 times","6 or more times")
+#levels(teeSf2_221$q91) <- c("0 times", "1 or 2 times", "3 to 9 times","10 to 19 times", "20 to 39 times", "40 or more times")
+levels(teeSf2_221$q53) <- c("0 times", "1 or 2 times", "3 to 9 times","10 to 19 times", "20 to 39 times", "40 or more times")
+head(teeSf2_221)
+
+
+
+female <- teeSf2_221[(as.character(teeSf2_221$q2)=="female"),]
+male <- teeSf2_221[(as.character(teeSf2_221$q2)=="male"),]
+all <- table(teeSf2_221$q28, teeSf2_221$q91)[,-1]
+f <- table(female$q28, female$q91)[,-1]
+m <- table(male$q28, male$q91)[,-1]
+
+f <- as.data.frame.matrix(f)
+m <- as.data.frame.matrix(m)
+all <- as.data.frame.matrix(all)
+
+setDT(f, keep.rownames = TRUE)[]
+setDT(m, keep.rownames = TRUE)[]
+setDT(all, keep.rownames = TRUE)[]
+
+Q91 <- merge(x = f, y = m, by = "rn")
+
+MyMerge <- function(x, y){
+  df <- merge(x, y, by= "rn", all.x= TRUE, all.y= TRUE, suffix=  c("_f","_m"))
+  return(df)
+}
+new.df <- Reduce(MyMerge, list(f, m, all))
+
+
+write.table(new.df, file = "q91drug.csv", sep = ",", quote = FALSE, row.names = F)
+
+
+#Q53 During your life, how many times have you used methamphetamines (also called speed, crystal, crank, or ice)? ---
+
+teeSf2_221$q52 <- as.factor(teeSf2_221$q52)
+levels(teeSf2_221$q53) <- c("0 times", "1 or 2 times", "3 to 9 times","10 to 19 times", "20 to 39 times", "40 or more times")
+
+all <- table(teeSf2_221$q28, teeSf2_221$q52)[,-1]
+f <- table(female$q28, female$q52)[,-1]
+m <- table(male$q28, male$q52)[,-1]
+
+f <- as.data.frame.matrix(f)
+m <- as.data.frame.matrix(m)
+all <- as.data.frame.matrix(all)
+
+setDT(f, keep.rownames = TRUE)[]
+setDT(m, keep.rownames = TRUE)[]
+setDT(all, keep.rownames = TRUE)[]
+
+
+MyMerge <- function(x, y){
+  df <- merge(x, y, by= "rn", all.x= TRUE, all.y= TRUE, suffix=  c("_f","_m"))
+  return(df)
+}
+new.df <- Reduce(MyMerge, list(f, m, all))
+
+
+write.table(new.df, file = "q52drug.csv", sep = ",", quote = FALSE, row.names = F)
+
+
+#Q42 During the past 30 days, on how many days did you have at least one drink of alcohol? ------
+
+teeSf2_221$q42 <- as.factor(teeSf2_221$q42)
+levels(teeSf2_221$q42) <- c("0 days", "1 or 2 days", "3 to 5 days","6 to 9 days", "10 to 19 days", "20 to 29 days","All 30 days")
+female <- teeSf2_221[(as.character(teeSf2_221$q2)=="female"),]
+male <- teeSf2_221[(as.character(teeSf2_221$q2)=="male"),]
+
+all <- table(teeSf2_221$q28, teeSf2_221$q42)[,-1]
+f <- table(female$q28, female$q42)[,-1]
+m <- table(male$q28, male$q42)[,-1]
+
+f <- as.data.frame.matrix(f)
+m <- as.data.frame.matrix(m)
+all <- as.data.frame.matrix(all)
+
+setDT(f, keep.rownames = TRUE)[]
+setDT(m, keep.rownames = TRUE)[]
+setDT(all, keep.rownames = TRUE)[]
+
+
+
+MyMerge <- function(x, y){
+  df <- merge(x, y, by= "rn", all.x= TRUE, all.y= TRUE, suffix=  c("_f","_m"))
+  return(df)
+}
+new.df <- Reduce(MyMerge, list(f, m, all))
+
+
+write.table(new.df, file = "q42alcohol.csv", sep = ",", quote = FALSE, row.names = F)
+
+
+#Q44 During the past 30 days, on how many days did you have 4 or more drinks of alcohol in a row (if you are female) or 5 or more drinks of alcohol in a row (if you are male)? -----
+teeSf2_221$q44 <- as.factor(teeSf2_221$q44)
+levels(teeSf2_221$q44) <- c("0 days", "1 day", "2 days","3 to 5 days", "6 to 9 days", "10 to 19 days","20 or more days")
+female <- teeSf2_221[(as.character(teeSf2_221$q2)=="female"),]
+male <- teeSf2_221[(as.character(teeSf2_221$q2)=="male"),]
+
+
+all <- table(teeSf2_221$q28, teeSf2_221$q44)[,-1]
+f <- table(female$q28, female$q44)[,-1]
+m <- table(male$q28, male$q44)[,-1]
+
+f <- as.data.frame.matrix(f)
+m <- as.data.frame.matrix(m)
+all <- as.data.frame.matrix(all)
+
+setDT(f, keep.rownames = TRUE)[]
+setDT(m, keep.rownames = TRUE)[]
+setDT(all, keep.rownames = TRUE)[]
+
+MyMerge <- function(x, y){
+  df <- merge(x, y, by= "rn", all.x= TRUE, all.y= TRUE, suffix=  c("_f","_m"))
+  return(df)
+}
+new.df <- Reduce(MyMerge, list(f, m, all))
+write.table(new.df, file = "q44alcohol.csv", sep = ",", quote = FALSE, row.names = F)
+
+
+#Q33 During the past 30 days, on the days you smoked, how many cigarettes did you smoke per day?  -----
+
+teeSf2_221$q33 <- as.factor(teeSf2_221$q33)
+levels(teeSf2_221$q33) <- c("Did not smoke ", "Less than 1", "1","2 to 5", "6 to 10", "11 to 20","More than 20")
+female <- teeSf2_221[(as.character(teeSf2_221$q2)=="female"),]
+male <- teeSf2_221[(as.character(teeSf2_221$q2)=="male"),]
+
+all <- table(teeSf2_221$q28, teeSf2_221$q33)[,-1]
+f <- table(female$q28, female$q33)[,-1]
+m <- table(male$q28, male$q33)[,-1]
+
+f <- as.data.frame.matrix(f)
+m <- as.data.frame.matrix(m)
+all <- as.data.frame.matrix(all)
+
+setDT(f, keep.rownames = TRUE)[]
+setDT(m, keep.rownames = TRUE)[]
+setDT(all, keep.rownames = TRUE)[]
+
+MyMerge <- function(x, y){
+  df <- merge(x, y, by= "rn", all.x= TRUE, all.y= TRUE, suffix=  c("_f","_m"))
+  return(df)
+}
+new.df <- Reduce(MyMerge, list(f, m, all))
+
+write.table(new.df, file = "q33smoke.csv", sep = ",", quote = FALSE, row.names = F)
+
+#Q32 During the past 30 days, on how many days did you smoke cigarettes?   -----
+
+teeSf2_221$q32 <- as.factor(teeSf2_221$q32)
+levels(teeSf2_221$q32) <- c("0 days ", "1 or 2 days", "3 to 5 days","6 to 9 days", "10 to 19 days", "20 to 29 days","All 30 days")
+female <- teeSf2_221[(as.character(teeSf2_221$q2)=="female"),]
+male <- teeSf2_221[(as.character(teeSf2_221$q2)=="male"),]
+
+all <- table(teeSf2_221$q28, teeSf2_221$q32)[,-1]
+f <- table(female$q28, female$q32)[,-1]
+m <- table(male$q28, male$q32)[,-1]
+
+f <- as.data.frame.matrix(f)
+m <- as.data.frame.matrix(m)
+all <- as.data.frame.matrix(all)
+
+setDT(f, keep.rownames = TRUE)[]
+setDT(m, keep.rownames = TRUE)[]
+setDT(all, keep.rownames = TRUE)[]
+
+MyMerge <- function(x, y){
+  df <- merge(x, y, by= "rn", all.x= TRUE, all.y= TRUE, suffix=  c("_f","_m"))
+  return(df)
+}
+new.df <- Reduce(MyMerge, list(f, m, all))
+
+write.table(new.df, file = "q32smoke.csv", sep = ",", quote = FALSE, row.names = F)
+
+#Q50 During your life, how many times have you sniffed glue, breathed the contents of aerosol spray cans, or inhaled any paints or sprays to get high--
+
+
+#Q14-During the past 12 months, on how many days did you carry a gun? (Do not count the days when you carried a gun only for hunting or for a sport, such as target shooting.)-----
+
+teeSf2_221$q14 <- as.factor(teeSf2_221$q14)
+levels(teeSf2_221$q14) <- c("0 day", "1 day", "2 or 3 days","4 or 5 days", "6 or more days")
+female <- teeSf2_221[(as.character(teeSf2_221$q2)=="female"),]
+male <- teeSf2_221[(as.character(teeSf2_221$q2)=="male"),]
+
+all <- table(teeSf2_221$q28, teeSf2_221$q14)[,-1]
+f <- table(female$q28, female$q14)[,-1]
+m <- table(male$q28, male$q14)[,-1]
+
+f <- as.data.frame.matrix(f)
+m <- as.data.frame.matrix(m)
+all <- as.data.frame.matrix(all)
+
+setDT(f, keep.rownames = TRUE)[]
+setDT(m, keep.rownames = TRUE)[]
+setDT(all, keep.rownames = TRUE)[]
+
+MyMerge <- function(x, y){
+  df <- merge(x, y, by= "rn", all.x= TRUE, all.y= TRUE, suffix=  c("_f","_m"))
+  return(df)
+}
+new.df <- Reduce(MyMerge, list(f, m, all))
+
+write.table(new.df, file = "q14gun.csv", sep = ",", quote = FALSE, row.names = F)
+
+#Q17 During the past 12 months, how many times were you in a physical fight? ----------
+teeSf2_221$q17 <- as.factor(teeSf2_221$q17)
+levels(teeSf2_221$q17) <- c("0 times", "1 time", "2 or 3 times","4 or 5 times", "6 or 7 times","8 or 9 times","10 or 11 times","12 or more times")
+female <- teeSf2_221[(as.character(teeSf2_221$q2)=="female"),]
+male <- teeSf2_221[(as.character(teeSf2_221$q2)=="male"),]
+
+all <- table(teeSf2_221$q28, teeSf2_221$q17)[,-1]
+f <- table(female$q28, female$q17)[,-1]
+m <- table(male$q28, male$q17)[,-1]
+
+f <- as.data.frame.matrix(f)
+m <- as.data.frame.matrix(m)
+all <- as.data.frame.matrix(all)
+
+setDT(f, keep.rownames = TRUE)[]
+setDT(m, keep.rownames = TRUE)[]
+setDT(all, keep.rownames = TRUE)[]
+
+MyMerge <- function(x, y){
+  df <- merge(x, y, by= "rn", all.x= TRUE, all.y= TRUE, suffix=  c("_f","_m"))
+  return(df)
+}
+new.df <- Reduce(MyMerge, list(f, m, all))
+
+write.table(new.df, file = "q17fight.csv", sep = ",", quote = FALSE, row.names = F)
+
+#21----------------
+
+teeSf2_221$q21 <- as.factor(teeSf2_221$q21)
+levels(teeSf2_221$q21) <- c("I did not date", "0 times", "1 time","2 or 3 times", "4 or 5 times","6 or more times")
+female <- teeSf2_221[(as.character(teeSf2_221$q2)=="female"),]
+male <- teeSf2_221[(as.character(teeSf2_221$q2)=="male"),]
+
+all <- table(teeSf2_221$q28, teeSf2_221$q21)[,-c(1,2)]
+f <- table(female$q28, female$q21)[,-c(1,2)]
+m  <- table(male$q28, male$q21)[,-c(1,2)]
+
+f <- as.data.frame.matrix(f)
+m <- as.data.frame.matrix(m)
+all <- as.data.frame.matrix(all)
+
+setDT(f, keep.rownames = TRUE)[]
+setDT(m, keep.rownames = TRUE)[]
+setDT(all, keep.rownames = TRUE)[]
+
+MyMerge <- function(x, y){
+  df <- merge(x, y, by= "rn", all.x= TRUE, all.y= TRUE, suffix=  c("_f","_m"))
+  return(df)
+}
+new.df <- Reduce(MyMerge, list(f, m, all))
+
+write.table(new.df, file = "q21sex.csv", sep = ",", quote = FALSE, row.names = F)
+
+
+
+#Demo========================
+
+#Gender
+str(teeSf2_221)
+table(teeSf2_221$q2, teeSf2_221$q28)
+table(teeSf2_221$q2, teeSf2_221$q28,teeSf2_221$q29)
+gender <- teeSf2_221$q2
+s_catgory <- teeSf2_221$q28
+demoGender <- as.data.frame(cbind(as.character(s_catgory),as.character(gender)))
+write.table(demoGender, file = "demoGender.csv", sep = ",", quote = FALSE, row.names = F)
+
+
+#Age
+teeSf2_221$q1 <- as.factor(teeSf2_221$q1)
+levels(teeSf2_221$q1) <- c("0 < 13 years","13 years","14 years", "15 years", "16 years","17 years","18 years +")
+teeSf2_221$q1 <- as.character(teeSf2_221$q1)
+teeSf2_221$q1[teeSf2_221$q1=="13 years"] <- "0 < 13 years"
+demoAge <- as.data.frame(cbind(as.character(s_catgory),as.character(teeSf2_221$q1)))
+write.table(demoAge, file = "demoAge.csv", sep = ",", quote = FALSE, row.names = F)
+
+table(teeSf2_221$q1, teeSf2_221$q28,teeSf2_221$q29)
+table(teeSf2_221$q1, teeSf2_221$q28)
+
+
+#Race
+teeSf2_221$q5
+race <- as.factor(as.character(teeSf2_221$q5))
+levels(race) <- c("AI/AN","AIAN/White","Asian","Black","Black/White","NH/OPI", "White","Other")
+demoRace <- as.data.frame(cbind(as.character(s_catgory),as.character(race)))
+write.table(demoRace, file = "demoRace.csv", sep = ",", quote = FALSE, row.names = F)
+write.table(q28, file = "q28.csv", sep = ",", quote = FALSE, row.names = F)
+table(race, teeSf2_221$q28,teeSf2_221$q29)
+table(race, teeSf2_221$q28)
+
+#convert to numerical
+race <- as.factor(as.character(teeSf2_221$q5))
+levels(race) <- c("AI/AN","AIAN/White","Asian","Black","Black/White","NH/OPI", "White","Other")
+levels(race) <- c("7","2","3","4","5","6", "1","8")
+race <- as.data.frame(as.character(race))
+table(race)
+write.table(attempts, file = "q28.csv", sep = ",", quote = FALSE, row.names = F)
+
+table(race)
+```
+

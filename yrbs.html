@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Teen Suicide</title>
+
+<!-- Bootstrap CSS CDN -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+<link rel="shortcut icon" href="icons8-bookmark-40.png">
+
+<!-- Custom styling -->
+<link rel="stylesheet" href="css/style.css">
+
+<!-- JS libraries -->
+<script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
+<!--<script src="https://d3js.org/d3.v4.min.js"></script>-->
+<!--Google Chart-->
+<!--<script type = "text/javascript" src = "https://www.gstatic.com/charts/loader.js"></script>-->
+
+<!-----AM Chart---->
+<script src="https://www.amcharts.com/lib/4/core.js"></script>
+<script src="https://www.amcharts.com/lib/4/charts.js"></script>
+<script src="https://www.amcharts.com/lib/4/themes/frozen.js"></script>
+<script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+
+<!-- Menu Collapse Icon -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css?family=Raleway:500|VT323|Shadows+Into+Light+Two" rel="stylesheet">
+</head>
+
+<body>
+<div class="wrapper">
+
+<!-- Sidebar  -->
+<nav id="sidebar">
+  <div class="sidebar-header"> 
+    <!--<h3>TEEN</h3>
+				<h3>SUICIDE</h3>--> 
+  </div>
+  <ul class="list-unstyled components">
+    <li> <a href="index.html"> Suicide in the States</a> </li>
+    <li>
+    <li class="active"> <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">2017 YRBS</a>
+      <ul class="collapse list-unstyled" id="homeSubmenu">
+        <li class="active"> <a href="yrbs.html">Overview</a> </li>
+        <li> <a href="gender.html">Gender</a> </li>
+        <li> <a href="age.html">Age</a> </li>
+        <li> <a href="race.html">Race</a> </li>
+        <li> <a href="brg.html">BMI + Race + Gender</a> </li>
+      </ul>
+    </li>
+    <li> <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><span>Causes</span></a>
+      <ul class="collapse list-unstyled" id="pageSubmenu">
+        <li> <a href="drug.html">Drug</a> </li>
+        <li> <a href="alcohol.html">Alcohol</a> </li>
+        <li> <a href="tu.html">Tobacco Use</a> </li>
+        <li> <a href="bet.html">Behavior Patterns</a> </li>
+      </ul>
+    </li>
+    <li> <a href="conclusion.html">Conclusion</a> </li>
+    <li> <a href="contact.html">Contact</a> </li>
+  </ul>
+  <ul class="list-unstyled CTAs">
+    <li> <a href="https://www.cdc.gov/healthyyouth/data/yrbs/pdf/2017/2017_YRBS_Data_Users_Guide.pdf" target="_blank" class="download">Download 2017 YRBS</a> </li>
+    <li> <a href="https://www.cdc.gov/healthyyouth/data/yrbs/data.htm" target="_blank"class="article">CDC Survey Data Source</a> </li>
+    <li > <a href="https://suicidepreventionlifeline.org/" target="_blank" class="helpline">Suicide Life Line <br/>
+      (1-800-273-8255)</a> </li>
+  </ul>
+</nav>
+
+<!-- Page Content  -->
+<div id="content" >
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid ">
+    <h4>>> 2017 YRBS Survey</h4>
+    <div class="float-right"></div>
+    <button type="button" id="sidebarCollapse" class="btn btn-secondary "> <i class="fa fa-cog " aria-hidden="true"></i> <span></span> </button>
+  </div>
+</nav>
+<img src="img/purple.jpg" class="fade-in one imagedropshadow mx-auto d-block img-fluid greyimg" alt="Responsive image"></img>
+<nav class="navbar bg-light">
+  <section class="intro">
+    <p class="text-center quotes">“No, you aren’t alone. Yes, we all feel this way sometimes. No, you won’t always feel like this. Yes, the world is a better place with you in it.” - Unknown </p>
+  </section>
+</nav>
+<h2>About YRBS</h2>
+<p>Youth Risk Behavior Survey (YRBS) collected is conducted by Center of Disease Control. It selects a sample of US schools in grades 9 through 12. Respondents were asked to report attempted suicides in the past 12 months from which the survey was collected. The survey monitors six categories of health-related behaviors that contribute to the leading causes of death and disability among youth and adults:</p>
+<ul>
+  <li>Behaviors that contribute to unintentional injuries and violence</li>
+  <li>Sexual behaviors related to unintended pregnancy and sexually transmitted diseases, including HIV infection</li>
+  <li>Alcohol and other drug use</li>
+  <li>Tobacco use</li>
+  <li>Unhealthy dietary behaviors</li>
+  <li>Inadequate physical activity</li>
+</ul>
+<div class="line"></div>
+<h2>Suicide is the Second Leading Cause of Death among Teens</h2>
+<h7 class="pl-2">The following graph displays the leading cause of death for age from 15 to 24 in 2017: </h7>
+<div class="fade-in two d-flex justify-content-center chart-wrapper"  id = "chartdiv1" style = "width:100%; height:500px" ></div>
+<p>According to Center of Disease Control (CDC), the rate of teen suicide has been climbing ever since 2009 and has only been surpassed by accidental injury in 2017. More teenagers and young adults die from suicide than from cancer, heart disease, AIDS, birth defects, stroke, pneumonia, influenza, and chronic lung disease, combined. With the dramatic increase of suicide during adolescent, teen suicide is an unfortunate result of more pressure and stresses from the modern world. </p>
+<div class="line"></div>
+<h2>YRBS Data Distribution</h2>
+<h7 class="pl-2">Categorized respondent cohorts by suicide intentions: </h7>
+<div class="d-flex row">
+  <div class="col-md-6" id="chartdiv2" style = "width: 500px; height:500px"></div>
+  <div class="col-md-6" id="chartdiv3" style = "width: 500px; height:500px"></div>
+</div>
+	
+	
+<p>The data has been filtered to respondents who have attempted suicide in the past. Missing were imputed after exclude repondents who refused to provide response to suicide attempt. 
+<br clear="all"></br>
+Most respondents out of the 10,686 responded do not display intention to suicide. There were about 793 displayed intention to suicide and 234 of the attempted suicides resulted in injury.</p>
+	
+<div class="line"></div>
+
+<h2>Demographic Variable Distribution</h2>
+<h7 class="pl-2">The graph below explores the general distribution among variables: </h7>
+<div class="fade-in three d-flex justify-content-center"  id = "chartdiv" style = "width:100%; height:500px" ></div>
+<p>Gender and Race display the most difference in distribution. The uneven spread in Race is driven by the normal population. However, difference in Gender will be worth probing because this pattern is exclusive to the sample selected by the survey. <br clear="all"></br>
+In the following exploratory analysis we will be focus on grouping findings by Genders.</p>	
+
+<p>(<a href="https://www.cdc.gov" target="_blank">Data Courtesy of CDC</a>)</p>
+	
+<div class="line"></div>
+<!--
+		
+    <div class="row pieControl">
+    		<div id="buttons" class="col-md-6">
+				<span>
+            	<button id="gender" class="btn btn-light">Gender</button>
+            	<button id="age" class="btn btn-light">Age</button>
+            	<button id="race" class="btn btn-light">Race</button>
+       			</span>
+           		<div id="pie-chart-area" class="col-md-6"></div> 
+		     </div>
+		<div class="col-md-6">Hi</div> 
+
+    </div>
+--> 
+
+<!-- Custom JS --> 
+<script src="js/amcharts.js"></script> 
+<!--Dateset Pie--> 
+<!--    <script src="data/dataset.js"></script>--> 
+<!--This creates the graphs --> 
+<!-- <script src="js/mainWawa.js"></script>--> 
+<!--<script src="js/groupBarwawa.js"></script>
+	<script src="js/d3-tip.js"></script>--> 
+<!--<script src="js/groupBarwawa.js"></script>--> 
+
+<!-- Popper.JS for drop-down --> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script> 
+<!-- Bootstrap JS --> 
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script> 
+<!-- jQuery Custom Scroller CDN --> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script> 
+<script type="text/javascript">
+		funnelChart();
+		circleChart2();
+        circleChart1();
+		roundBar();
+       //Fading in content effect
+        $(document).ready(function () {
+
+	   
+	  //Expandable sidebar
+      $("#sidebar").mCustomScrollbar({
+                theme: "minimal"
+            });
+		//Sidebar shrink 	
+		$('#sidebarCollapse').on('click', function () {
+                $('#sidebar, #content').toggleClass('active');
+                $('.collapse.in').toggleClass('in');
+                $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+        });
+		
+		
+			
+        }); // end effects
+    </script>
+</body>
+</html>

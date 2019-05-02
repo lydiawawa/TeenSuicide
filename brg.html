@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Teen Suicide</title>
+
+<!-- Bootstrap CSS CDN -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+<link rel="shortcut icon" href="icons8-bookmark-40.png">
+
+<!-- Custom styling -->
+<link rel="stylesheet" href="css/style.css">
+
+<!-- JS libraries -->
+<script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
+<script src="https://d3js.org/d3.v3.min.js"></script>
+<!--Google Chart-->
+<script type = "text/javascript" src = "https://www.gstatic.com/charts/loader.js"></script>
+
+<!-----AM Chart
+	<script src="https://www.amcharts.com/lib/4/core.js"></script>
+	<script src="https://www.amcharts.com/lib/4/charts.js"></script>
+	<script src="https://www.amcharts.com/lib/4/themes/frozen.js"></script>
+	<script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+	---->
+
+<!-- Menu Collapse Icon -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css?family=Raleway:500|VT323|Shadows+Into+Light+Two" rel="stylesheet">
+</head>
+
+<body>
+<div class="wrapper">
+
+<!-- Sidebar  -->
+<nav id="sidebar">
+  <div class="sidebar-header">
+<!--<h3>TEEN</h3>
+<h3>SUICIDE</h3>-->
+  </div>
+  <ul class="list-unstyled components">
+    <li> <a href="index.html"> Suicide in the States</a> </li>
+    <li>
+    <li class="active"> <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">2017 YRBS</a>
+      <ul class="collapse list-unstyled" id="homeSubmenu">
+        <li> <a href="yrbs.html">Overview</a> </li>
+        <li> <a href="gender.html">Gender</a> </li>
+        <li> <a href="age.html">Age</a> </li>
+        <li > <a href="race.html">Race</a> </li>
+        <li  class="active"> <a href="brg.html">BMI + Race + Gender</a> </li>
+      </ul>
+    </li>
+    <li> <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><span>Causes</span></a>
+      <ul class="collapse list-unstyled" id="pageSubmenu">
+        <li> <a href="drug.html">Drug</a> </li>
+        <li> <a href="alcohol.html">Alcohol</a> </li>
+        <li> <a href="tu.html">Tobacco Use</a> </li>
+        <li> <a href="bet.html">Behavior Patterns</a> </li>
+      </ul>
+    </li>
+    <li> <a href="conclusion.html">Conclusion</a> </li>
+    <li> <a href="contact.html">Contact</a> </li>
+  </ul>
+  <ul class="list-unstyled CTAs">
+    <li> <a href="https://www.cdc.gov/healthyyouth/data/yrbs/pdf/2017/2017_YRBS_Data_Users_Guide.pdf" target="_blank" class="download">Download 2017 YRBS</a> </li>
+    <li> <a href="https://www.cdc.gov/healthyyouth/data/yrbs/data.htm" target="_blank"class="article">CDC Survey Data Source</a> </li>
+    <li > <a href="https://suicidepreventionlifeline.org/" target="_blank" class="helpline">Suicide Life Line <br/>
+      (1-800-273-8255)</a> </li>
+  </ul>
+</nav>
+
+<!-- Page Content  -->
+<div id="content" >
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid ">
+    <h4>>> 2017 YRBS Survey - BMI + Race + Gender</h4>
+    <div class="float-right"></div>
+    <button type="button" id="sidebarCollapse" class="btn btn-secondary "> <i class="fa fa-cog " aria-hidden="true"></i> <span></span> </button>
+  </div>
+</nav>
+<img src="img/sad.jpg" class="fade-in one imagedropshadow mx-auto d-block img-fluid greyimg" alt="Responsive image" style = "width:50%; height:50%"></img>
+<nav class="navbar bg-light">
+  <section class="intro">
+    <p class="text-center quotes">“Suicide doesn’t end the chances of life getting worse, it eliminates the possibility of it ever getting any better.”  ― Unknown </p>
+  </section>
+</nav>
+<h2>Connection between BMI + Race + Gender</h2>
+<h7 class="pl-2">The following graph displays the age distribution in YRBS survey: </h7>
+<div class="row justify-content-center" >
+  <div class="d-flex col-xs-6 " id = "bubbleChartRace"></div>
+  <div class="d-flex col-xs-6 " id = "bubbleChartGender" ></div>
+  <div class="w-100"></div>
+  <div class="col-xs-6"><span style="text-align:center">Race vs BMI (left) Race vs Gender (right)</span></div>
+	
+</div>
+<p>There are 793 respondents attempted suicide in the survey. The size of the circles is determined by individual BMI, and colors are alternatinated by Race or Gender. 
+	<br clear="all"></br>
+Respondents attempted suicide tend to have larger BMI.
+</p>
+
+<div class="line"></div>
+<h2>Suicide resulted in injury by BMI, Race and Gender</h2>
+<h7 class="pl-2">The following graph displays patterns in serious suicide in relation to BMI, Race and Gender: </h7>
+<div class="fade-in two d-flex justify-content-center chart-wrapper"  id = "bubBMIRace_div" style = "width: 950px; height:800px" ></div>
+<p>Race is coded on the x-axis as the following:</p>
+	<ul>
+		<li>1 = "White"</li>
+		<li>2 = "AIAN/White"</li>
+		<li>3 = "Asian"</li>
+		<li>4 = "Black"</li>
+		<li>5 = "Black/White"</li>
+		<li>6 = "NH/OPI"</li>
+		<li>7 = "AI/AN"</li>
+		<li>8 = "Other"</li>
+		
+	</ul>
+<p>Serious suicide attempt agrees with the previous graph distribution. We can infer that BMI is directly associated with the tendency to suicide among teens.</p>
+<p>(<a href="https://www.cdc.gov" target="_blank">Data Courtesy of CDC</a>)</p>
+<div class="line"></div>
+
+<!-- Custom JS --> 
+<!--<script src="js/amcharts.js"></script> -->
+<!--Dateset Pie--> 
+<!--<script src="data/dataset.js"></script> -->
+<!--This creates the graphs --> 
+<script src="js/bubbleWawa.js"></script> 
+<!--<script src="js/mainWawa.js"></script> --> 
+<!--<script src="js/groupBarwawa.js"></script>--> 
+<!--<script src="js/d3-tip.js"></script>-->
+<!--<script src="js/groupBarwawa.js"></script>--> 
+
+<!-- Popper.JS for drop-down --> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script> 
+<!-- Bootstrap JS --> 
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script> 
+<!-- jQuery Custom Scroller CDN --> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script> 
+
+
+<script type="text/javascript">
+		//raceStacked();
+       //Fading in content effect
+        $(document).ready(function () {
+			 /* Every time the window is scrolled ... */
+
+	   
+	  //Expandable sidebar
+      $("#sidebar").mCustomScrollbar({
+                theme: "minimal"
+            });
+		//Sidebar shrink 	
+		$('#sidebarCollapse').on('click', function () {
+                $('#sidebar, #content').toggleClass('active');
+                $('.collapse.in').toggleClass('in');
+                $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+        });
+		
+		
+			
+        }); // end effects
+    </script>
+</body>
+</html>

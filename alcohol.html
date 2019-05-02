@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Teen Suicide</title>
+
+<!-- Bootstrap CSS CDN -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+<link rel="shortcut icon" href="icons8-bookmark-40.png">
+
+<!-- Custom styling -->
+<link rel="stylesheet" href="css/style.css">
+
+<!-- JS libraries -->
+<script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<!--Google Chart-->
+<script type = "text/javascript" src = "https://www.gstatic.com/charts/loader.js"></script>
+
+<!-----AM Chart------>
+<!--
+<script src="https://www.amcharts.com/lib/4/core.js"></script>
+<script src="https://www.amcharts.com/lib/4/charts.js"></script>
+<script src="https://www.amcharts.com/lib/4/themes/frozen.js"></script>
+<script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+-->
+
+<!-- Menu Collapse Icon -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css?family=Raleway:500|VT323|Shadows+Into+Light+Two" rel="stylesheet">
+</head>
+
+<body>
+<div class="wrapper">
+
+<!-- Sidebar  -->
+<nav id="sidebar">
+  <div class="sidebar-header">
+<!--<h3>TEEN</h3>
+<h3>SUICIDE</h3>-->
+  </div>
+  <ul class="list-unstyled components">
+    <li> <a href="index.html"> Suicide in the States</a> </li>
+    <li>
+    <li> <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">2017 YRBS</a>
+      <ul class="collapse list-unstyled" id="homeSubmenu">
+        <li> <a href="yrbs.html">Overview</a> </li>
+        <li> <a href="gender.html">Gender</a> </li>
+        <li> <a href="age.html">Age</a> </li>
+        <li> <a href="race.html">Race</a> </li>
+        <li> <a href="brg.html">BMI + Race + Gender</a> </li>
+      </ul>
+    </li>
+    <li  class="active"> <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><span>Causes</span></a>
+      <ul class="collapse list-unstyled" id="pageSubmenu">
+        <li > <a href="drug.html">Drug</a> </li>
+        <li class="active"> <a href="alcohol.html">Alcohol</a> </li>
+        <li> <a href="tu.html">Tobacco Use</a> </li>
+        <li> <a href="bet.html">Behavior Patterns</a> </li>
+      </ul>
+    </li>
+    <li> <a href="conclusion.html">Conclusion</a> </li>
+    <li> <a href="contact.html">Contact</a> </li>
+  </ul>
+  <ul class="list-unstyled CTAs">
+    <li> <a href="https://www.cdc.gov/healthyyouth/data/yrbs/pdf/2017/2017_YRBS_Data_Users_Guide.pdf" target="_blank" class="download">Download 2017 YRBS</a> </li>
+    <li> <a href="https://www.cdc.gov/healthyyouth/data/yrbs/data.htm" target="_blank"class="article">CDC Survey Data Source</a> </li>
+    <li > <a href="https://suicidepreventionlifeline.org/" target="_blank" class="helpline">Suicide Life Line <br/>
+      (1-800-273-8255)</a> </li>
+  </ul>
+</nav>
+
+<!-- Page Content  -->
+<div id="content" >
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid ">
+    <h4>>> 2017 YRBS Finding - Alcohol</h4>
+    <div class="float-right"></div>
+    <button type="button" id="sidebarCollapse" class="btn btn-secondary "> <i class="fa fa-cog " aria-hidden="true"></i> <span></span> </button>
+  </div>
+</nav>
+<img src="img/alcohol.jpg" class="fade-in one imagedropshadow mx-auto d-block img-fluid greyimg" alt="Responsive image" style = "width:40%; height:40%"></img>
+<nav class="navbar bg-light">
+  <section class="intro">
+    <p class="text-center quotes">“Alcohol gave me wings, and then slowly took away my sky.” ― Unknown </p>
+  </section>
+</nav>
+<h2>Alcohol's influence on teen suicide</h2>
+<h7 class="pl-2">The following graph displays habit of alcohol usage by gender: </h7>
+
+	
+<!---Q42Alcohol1------------------------------------------------->
+<div class="bar-wrap fade-in one" style = "width: 800px; height:500px">	
+<b>Choose Category</b>
+<select id="categoryAlco1">
+  <option value="a">All</option>
+  <option value="f">Female</option>
+  <option value="m">Male</option>
+  </select> <br> <br>
+  <span class="titleBar">During the past 30 days, on how many days did you have at least one drink of alcohol?</span>
+
+	
+<div id="group-bar-alco1" style = "width: 880px; height:500px"></div>
+
+<span class="clickThisAlco1 clickThis"> <b> <-- Click reactangle! </b></span>
+
+<!-- Sort dimension -->
+<span class="sortCheck"><b style="font-size: 11px;">Sort Values</b>
+<input type="checkbox" id="sortCheckboxAlco1">
+</span>	
+</div>	
+
+<div class="line"></div>
+
+	
+<!---Q44Alcohol2------------------------------------------------->
+<div class="bar-wrap fade-in two" style = "width: 800px; height:500px">	
+<b>Choose Category</b>
+<select id="categoryAlco2">
+  <option value="a">All</option>
+  <option value="f">Female</option>
+  <option value="m">Male</option>
+  </select> <br> <br>
+  <span class="titleBar">During the past 30 days, on how many days did you have 4 or more drinks of alcohol in a row (if you are female) or 5 or more drinks of alcohol in a row (if you are male)? </span>
+
+	
+<div id="group-bar-alco2" style = "width: 880px; height:500px"></div>
+
+<span class="clickThisAlco2 clickThis"> <b> <-- Click reactangle! </b></span>
+
+<!-- Sort dimension -->
+<span class="sortCheck"><b style="font-size: 11px;">Sort Values</b>
+<input type="checkbox" id="sortCheckboxAlco2">
+</span>	
+</div>		
+	
+	
+	
+	
+<p>Alcohol displays very similar distribution as drug from the previous section. This reveals that the two can be correlated to the habit of teen suicide. A majority of extreme suicidal group have heavy dose of alcohol, especially for males. </p>
+<p>(<a href="https://www.cdc.gov" target="_blank">Data Courtesy of CDC</a>)</p>
+<div class="line"></div>
+
+<!-- Custom JS --> 
+<script src="js/amcharts.js"></script> 
+
+<!--This creates the graphs --> 
+<!--<script src="js/mainWawa.js"></script>--> 
+<script src="js/groupBarwawa.js"></script> 
+<script src="js/d3-tip.js"></script> 
+<!--<script src="js/groupBarwawa.js"></script>--> 
+
+<!-- Popper.JS for drop-down --> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script> 
+<!-- Bootstrap JS --> 
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script> 
+<!-- jQuery Custom Scroller CDN --> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script> 
+
+
+<script type="text/javascript">
+groupBar("#group-bar-alco1", 
+		 "#categoryAlco1", 
+		 "#sortCheckboxAlco1",
+		".clickThisAlco1",
+		 "data/q42alcohol.csv", 
+		 "<strong>At least 1 drink of alcohol: </strong>",
+		 7);
+
+groupBar("#group-bar-alco2", 
+		 "#categoryAlco2", 
+		 "#sortCheckboxAlco2",
+		".clickThisAlco2",
+		 "data/q44alcohol.csv", 
+		 "<strong>Days of drinking: </strong>",
+		 7);
+	
+       //Fading in content effect
+        $(document).ready(function () {
+			 /* Every time the window is scrolled ... */
+    
+      $("#sidebar").mCustomScrollbar({
+                theme: "minimal"
+            });
+		//Sidebar shrink 	
+		$('#sidebarCollapse').on('click', function () {
+                $('#sidebar, #content').toggleClass('active');
+                $('.collapse.in').toggleClass('in');
+                $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+        });
+		
+		
+			
+        }); // end effects
+    </script>
+</body>
+</html>

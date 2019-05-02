@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Teen Suicide</title>
+
+    <!-- Bootstrap CSS CDN -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	<link rel="shortcut icon" href="icons8-bookmark-40.png">	
+
+	<!-- Custom styling -->
+	<link rel="stylesheet" href="css/style.css">
+
+
+	<!-- JS libraries -->	
+	<script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
+	<script src="https://d3js.org/d3.v4.min.js"></script>
+	<!--Google Chart-->
+	<script type = "text/javascript" src = "https://www.gstatic.com/charts/loader.js"></script>
+
+	<!-----AM Chart---->
+<!--	<script src="https://www.amcharts.com/lib/4/core.js"></script>
+	<script src="https://www.amcharts.com/lib/4/charts.js"></script>
+	<script src="https://www.amcharts.com/lib/4/themes/frozen.js"></script>
+	<script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>-->
+
+
+	<!-- Menu Collapse Icon -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+	
+	<!-- Google Font -->
+	<link href="https://fonts.googleapis.com/css?family=Raleway:500|VT323" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div class="wrapper">
+	
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+	
+            <div class="sidebar-header">
+<!--<h3>TEEN</h3>
+<h3>SUICIDE</h3>-->
+            </div>
+					
+ 			<ul class="list-unstyled components">
+           
+                <li class="active">
+                    <a href="index12.html"> Suicide in the States</a>
+                </li>
+                <li>
+
+                <li>
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">2017 YRBS</a>
+                    <ul class="collapse list-unstyled" id="homeSubmenu">
+						<li>
+                            <a href="yrbs.html">Overview</a>
+                        </li>
+                        <li>
+                            <a href="gender.html">Gender</a>
+                        </li>
+                        <li>
+                            <a href="age.html">Age</a>
+                        </li>
+                        <li>
+                            <a href="race.html">Race</a>
+                        </li>
+						<li>
+                            <a href="brg.html">BMI + Race + Gender</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><span>Causes</span></a>
+                    <ul class="collapse list-unstyled" id="pageSubmenu">
+                        <li>
+                            <a href="drug.html">Drug</a>
+                        </li>
+                        <li>
+                            <a href="alcohol.html">Alcohol</a>
+                        </li>
+                        <li>
+                            <a href="tu.html">Smoking</a>
+                        </li>
+						<li>
+                            <a href="bet.html">Behavior Patterns</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="conclusion.html">Conclusion</a>
+                </li>
+                <li>
+                    <a href="contact.html">Contact</a>
+                </li>
+            </ul>
+
+            <ul class="list-unstyled CTAs">
+                <li>
+                    <a href="https://www.cdc.gov/healthyyouth/data/yrbs/pdf/2017/2017_YRBS_Data_Users_Guide.pdf" target="_blank" class="download">Download 2017 YRBS</a>
+                </li>
+                <li>
+                    <a href="https://www.cdc.gov/healthyyouth/data/yrbs/data.htm" target="_blank"class="article">CDC Survey Data Source</a>
+                </li>
+				 <li >
+                    <a href="https://suicidepreventionlifeline.org/" target="_blank" class="helpline">Suicide Life Line <br/> (1-800-273-8255)</a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Page Content  -->
+        <div id="content" >
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid ">
+					<h4>>> SUICIDE IN THE STATES</h4>
+				<div class="float-right"></div>
+                    <button type="button" id="sidebarCollapse" class="btn btn-secondary ">
+                        <i class="fa fa-cog " aria-hidden="true"></i>
+                        <span></span>
+                    </button>					
+                </div>
+            </nav>
+		 <div class="centerme">
+		 <div class="row fade-in one d-flex justify-content-center center-block">
+		 <div class="counter col-lg-3">
+     		 <p class="count-text">By 2017, suicide is the number</p>
+     		 <h2 class="timer count-title count-number" data-to="10" data-speed="2500"></h2>
+      		 <p class="count-text ">leading cause of death overall in the United States.</p>
+    	</div>
+
+  		  <div class="counter col-lg-3">
+     		 <p class="count-text"></p>
+			 <p class="count-text">In 2017,</p>
+     		 <h2 class="timer count-title count-number" data-to="47173" data-speed="2500"></h2>
+     		 <p class="count-text ">lives were claimed by suicide.</p>
+    	</div>
+
+   		 <div class="counter col-lg-3">
+    		  <p class="count-text">Suicide was the second leading cause of death among individuals between the ages of 10 and 34. In 2017,</p>
+     		 <h2 class="timer count-title count-number" data-to="14717" data-speed="2500"></h2>
+     		 <p class="count-text ">young lives were claimed by suicide.</p>
+   		 </div>
+		</div>
+        <!--
+    	<div class="counter col-md-4">
+     		 <i class="fa fa-bug fa-2x"></i>
+     		 <h2 class="timer count-title count-number" data-to="157" data-speed="1500"></h2>
+     		 <p class="count-text ">SomeText GoesHere</p>
+    	</div>
+		-->
+		</div>
+			 
+			 <nav class="navbar bg-light">
+		    <section class="intro">
+		    <p>This site is dedicated to portray the common characteristics of suicide victims by using data visualization combined with quantitative research. The purpose of the research is to serve as a preventative measurement to suicides,especially among teens. 
+			<br/><br/>
+			Before examining the common traits of teen suicide victims, it is necessary to explore its overall distribution in the total population. This section focuses on suicide in the states among all ages to start with the bigger picture of suicide victim distribution.</p>
+		    </section>
+			</nav>
+			
+            <h2>Suicide Mortality by State in 2017</h2>
+			<div class="fade-in one d-flex justify-content-center chart-wrapper" id = "suicidestate_div" style = "width:80%; height:80%px" ></div>
+            <p>In 2017, the state with lowest suicide is New York, the low rate is most likely driven by its large population. On the other end, Montana claims the first spot to have a 28.9 state wide suicide rate, followed closely by Alaska with a rate of 27%.</p>
+            
+            <div class="line"></div>
+
+            <h2>Age-Adjusted Suicide Rates in the United States (2001-2017)</h2>
+			
+			<div class="fade-in two d-flex justify-content-center chart-wrapper"  id = "suicidesgender_div" style = "width:100%; height:500px" ></div>
+            <p>Suicide rate is based on the number of people who have died by suicide per 100,000 population. Because changes in population size are taken into account, rates allow for comparisons from one year to the next.</p>
+			<p>Figure above shows age-adjusted suicide rate of the total population for female and male represented seperately.</p>
+			<ul>
+				<li>Over the duration of 16 years, total suicide rate increased from 10.7 to 14 percent</li>
+				<li>The suicide rate among males exceeds female by close to four times in 2017.
+				</li>
+			</ul>
+			
+			<p>(<a href="https://www.cdc.gov" target="_blank">Data Courtesy of CDC</a>)</p>
+
+            <div class="line"></div>
+
+        </div>
+    </div>
+
+     <!-- Custom JS -->
+	<script src="js/gCharts.js"></script>
+	<script src="js/amcharts.js"></script>
+
+    <!--This creates the graphs -->
+<!--    <script src="js/mainWawa.js"></script>-->
+    <!--<script src="js/groupBarwawa.js"></script>-->
+	
+    <!-- Popper.JS for drop-down -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+    <!-- jQuery Custom Scroller CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+	
+	
+	<!--Counter script-->
+	<script>
+	(function ($) {
+	$.fn.countTo = function (options) {
+		options = options || {};
+		
+		return $(this).each(function () {
+			// set options for current element
+			var settings = $.extend({}, $.fn.countTo.defaults, {
+				from:            $(this).data('from'),
+				to:              $(this).data('to'),
+				speed:           $(this).data('speed'),
+				refreshInterval: $(this).data('refresh-interval'),
+				decimals:        $(this).data('decimals')
+			}, options);
+			
+			// how many times to update the value, and how much to increment the value on each update
+			var loops = Math.ceil(settings.speed / settings.refreshInterval),
+				increment = (settings.to - settings.from) / loops;
+			
+			// references & variables that will change with each update
+			var self = this,
+				$self = $(this),
+				loopCount = 0,
+				value = settings.from,
+				data = $self.data('countTo') || {};
+			
+			$self.data('countTo', data);
+			
+			// if an existing interval can be found, clear it first
+			if (data.interval) {
+				clearInterval(data.interval);
+			}
+			data.interval = setInterval(updateTimer, settings.refreshInterval);
+			
+			// initialize the element with the starting value
+			render(value);
+			
+			function updateTimer() {
+				value += increment;
+				loopCount++;
+				
+				render(value);
+				
+				if (typeof(settings.onUpdate) == 'function') {
+					settings.onUpdate.call(self, value);
+				}
+				
+				if (loopCount >= loops) {
+					// remove the interval
+					$self.removeData('countTo');
+					clearInterval(data.interval);
+					value = settings.to;
+					
+					if (typeof(settings.onComplete) == 'function') {
+						settings.onComplete.call(self, value);
+					}
+				}
+			}
+			
+			function render(value) {
+				var formattedValue = settings.formatter.call(self, value, settings);
+				$self.html(formattedValue);
+			}
+		});
+	};
+	
+	$.fn.countTo.defaults = {
+		from: 0,               // the number the element should start at
+		to: 0,                 // the number the element should end at
+		speed: 1000,           // how long it should take to count between the target numbers
+		refreshInterval: 100,  // how often the element should be updated
+		decimals: 0,           // the number of decimal places to show
+		formatter: formatter,  // handler for formatting the value before rendering
+		onUpdate: null,        // callback method for every time the element is updated
+		onComplete: null       // callback method for when the element finishes updating
+	};
+	
+	function formatter(value, settings) {
+		return value.toFixed(settings.decimals);
+	}
+}(jQuery));
+
+jQuery(function ($) {
+  // custom formatting example
+  $('.count-number').data('countToOptions', {
+	formatter: function (value, options) {
+	  return value.toFixed(options.decimals).replace(/\B(?=(?:\d{3})+(?!\d))/g, ',');
+	}
+  });
+  
+  // start all the timers
+  $('.timer').each(count);  
+  
+  function count(options) {
+	var $this = $(this);
+	options = $.extend({}, options || {}, $this.data('countToOptions') || {});
+	$this.countTo(options);
+  }
+});
+	</script>	
+	
+    <script type="text/javascript">
+		
+       //Fading in content effect
+        $(document).ready(function () {
+
+	   
+	  //Expandable sidebar
+      $("#sidebar").mCustomScrollbar({
+                theme: "minimal"
+            });
+		//Sidebar shrink 	
+		$('#sidebarCollapse').on('click', function () {
+                $('#sidebar, #content').toggleClass('active');
+                $('.collapse.in').toggleClass('in');
+                $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+        });
+		
+		
+			
+        }); // end effects
+    </script>
+</body>
+
+</html>
